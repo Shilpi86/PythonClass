@@ -5,7 +5,7 @@ print(a1[0:6])
 print(a1)
 a1.append(47394) #append the data to list
 print(a1)
-a1.insert(2,'list examples') #insert the value at specific position
+a1.insert(2,'list examples') #insert the value/element at specific position
 print(a1)
 a1[6]='same' #replacing the value at specific position
 print(a1)
