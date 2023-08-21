@@ -1,5 +1,5 @@
 #List uses the functions like print, append(add), change, delete,slice the values.
-#can be changed(immutable) and [] brackets are used. Has ordered data
+#can be changed(immutable) and [] brackets are used. Has ordered data(display in same format)
 
 a1 = [12, 45, 566,'wassup',90,'hi',45] #stores the values in 0,1,2,3... index position
 print(a1[:5])
