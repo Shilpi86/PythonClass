@@ -1,3 +1,10 @@
+#IF example
+a=90
+b=40
+if(a>=b):
+    print("greater Value")
+
+#If Else example
 a=30
 b=40
 if(a>=b):
@@ -5,7 +12,7 @@ if(a>=b):
 else:
     print("condition not fulfilled")
 
-
+#Else If example:
 a=50
 b=50
 
