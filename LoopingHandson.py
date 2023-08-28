@@ -17,8 +17,32 @@ print("Average of list: ", round(average, 3))
 #3. Given two integers M and N , write a program to print a solid rectangle pattern of M rows and N columns
 # using the hash character (#)
 
-M = 4
-N = 8
+#hollow square
+print("This is the hollow square")
+num = int(input("Enter the number of rows: "))
+for row in range(1,num+1):
+    for col in range(1,num+1):
+        if row==1 or row==num or col==1 or col==num:
+            print("#",end=" ")
+        else:
+            print(" ",end=" ")
+    print()
+
+#Solid square
+print("This is the solid square")
+n = int(input("Enter the value: "))
+for i in range(1, n + 1):
+    print(" # " * n)
+
+#solid rectangle
+print("This is the solid rectangle")
+m = int(input("Enter the value: "))
+n = int(input("Enter the value: "))
+print(" # " * m)
+for i in range(1,n+1):
+    print(" # " * m)
+
+#Hollow Rectangle
 
 
 
