@@ -1,6 +1,6 @@
 # multiple classes can have multiple functions
-# inheriting those multiplt classes and functions is called multiple inheritance.(
-
+# inheriting those multiple classes and functions is called multiple inheritance.(
+# from multiple classes to one class
 class Father:
     def home(self):
         print("Home- 2 flats and 2 plots")

@@ -1,5 +1,5 @@
 # inheriting at many levels from different classes. ex: class A, class B(A), class C(B)
-
+# from 1 class to new class , again from previous class to new class
 class Airpod:
     def noise(self):
         print("Airpod - noise cancellation feature available")
