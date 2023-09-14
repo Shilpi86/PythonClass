@@ -1,0 +1,409 @@
+Last login: Wed Sep 13 14:23:27 on ttys000
+shona@shilpitas-Air ~ % /usr/local/mysql/bin/mysql -uroot -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.1.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database pythonclass;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| pythonclass        |
+| sys                |
++--------------------+
+5 rows in set (0.03 sec)
+
+mysql> use pythonclass;
+Database changed
+mysql> create table student1(id int,name varchar(20),address varchar(50));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++-----------------------+
+| Tables_in_pythonclass |
++-----------------------+
+| student1              |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> desc student1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int         | YES  |     | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| address | varchar(50) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> create table employee1;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table employee1(empno int,empname varchar(20),sal int);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++-----------------------+
+| Tables_in_pythonclass |
++-----------------------+
+| employee1             |
+| student1              |
++-----------------------+
+2 rows in set (0.00 sec)
+
+mysql> rename table employee1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> rename employee1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'employee1' at line 1
+mysql> rename employee1 to employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'employee1 to employee' at line 1
+mysql> rename table employee1 to employee;
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> rename table student1 to student;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++-----------------------+
+| Tables_in_pythonclass |
++-----------------------+
+| employee              |
+| student               |
++-----------------------+
+2 rows in set (0.02 sec)
+
+mysql> duplicate table employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'duplicate table employee' at line 1
+mysql> drop table employee;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++-----------------------+
+| Tables_in_pythonclass |
++-----------------------+
+| student               |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> create table emp(emp_no int,emp_name varchar(20), emp_sal int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++-----------------------+
+| Tables_in_pythonclass |
++-----------------------+
+| emp                   |
+| student               |
++-----------------------+
+2 rows in set (0.00 sec)
+
+mysql> alter table emp add add dept_name varchar(20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'add dept_name varchar(20)' at line 1
+mysql> alter table emp add dept_name varchar(20);
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| emp_no    | int         | YES  |     | NULL    |       |
+| emp_name  | varchar(20) | YES  |     | NULL    |       |
+| emp_sal   | int         | YES  |     | NULL    |       |
+| dept_name | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+
+mysql> alter table emp column emp_sal to emp_salary;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'column emp_sal to emp_salary' at line 1
+mysql> alter table emp rename column emp_sal to emp_salary;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| emp_no     | int         | YES  |     | NULL    |       |
+| emp_name   | varchar(20) | YES  |     | NULL    |       |
+| emp_salary | int         | YES  |     | NULL    |       |
+| dept_name  | varchar(20) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table emp add emp_id int;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| emp_no     | int         | YES  |     | NULL    |       |
+| emp_name   | varchar(20) | YES  |     | NULL    |       |
+| emp_salary | int         | YES  |     | NULL    |       |
+| dept_name  | varchar(20) | YES  |     | NULL    |       |
+| emp_id     | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table emp drop column emp_id;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| emp_no     | int         | YES  |     | NULL    |       |
+| emp_name   | varchar(20) | YES  |     | NULL    |       |
+| emp_salary | int         | YES  |     | NULL    |       |
+| dept_name  | varchar(20) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> alter table emp modify emp_name varchar(30);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| emp_no     | int         | YES  |     | NULL    |       |
+| emp_name   | varchar(30) | YES  |     | NULL    |       |
+| emp_salary | int         | YES  |     | NULL    |       |
+| dept_name  | varchar(20) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int         | YES  |     | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| address | varchar(50) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.08 sec)
+
+mysql> insert into student values(102,'Krishna','oxford ave');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int         | YES  |     | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| address | varchar(50) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> select * from student;
++------+---------+------------+
+| id   | name    | address    |
++------+---------+------------+
+|  102 | Krishna | oxford ave |
++------+---------+------------+
+1 row in set (0.01 sec)
+
+mysql> insert into student values(104,'Krisa','redd ave');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(106,'Kit kat','bear st');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++------+---------+------------+
+| id   | name    | address    |
++------+---------+------------+
+|  102 | Krishna | oxford ave |
+|  104 | Krisa   | redd ave   |
+|  106 | Kit kat | bear st    |
++------+---------+------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into student (address,name,id) values ('rose rd','priya',108);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * form student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form student' at line 1
+mysql> select * from student;
++------+---------+------------+
+| id   | name    | address    |
++------+---------+------------+
+|  102 | Krishna | oxford ave |
+|  104 | Krisa   | redd ave   |
+|  106 | Kit kat | bear st    |
+|  108 | priya   | rose rd    |
++------+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select id,name from student;
++------+---------+
+| id   | name    |
++------+---------+
+|  102 | Krishna |
+|  104 | Krisa   |
+|  106 | Kit kat |
+|  108 | priya   |
++------+---------+
+4 rows in set (0.00 sec)
+
+mysql> insert into student values(110,'Kittyt','');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from student;
++------+---------+------------+
+| id   | name    | address    |
++------+---------+------------+
+|  102 | Krishna | oxford ave |
+|  104 | Krisa   | redd ave   |
+|  106 | Kit kat | bear st    |
+|  108 | priya   | rose rd    |
+|  110 | Kittyt  |            |
++------+---------+------------+
+5 rows in set (0.01 sec)
+
+mysql> insert into student values(110,'Kittyt');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into student values(110,'Kittyt',);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> insert into student values(110,'Kittyt',Null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from student;
++------+---------+------------+
+| id   | name    | address    |
++------+---------+------------+
+|  102 | Krishna | oxford ave |
+|  104 | Krisa   | redd ave   |
+|  106 | Kit kat | bear st    |
+|  108 | priya   | rose rd    |
+|  110 | Kittyt  |            |
+|  110 | Kittyt  | NULL       |
++------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update table student set id=120 where id=110;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table student set id=120 where id=110' at line 1
+mysql> update student set id=120 where id=110;
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from student;
++------+---------+------------+
+| id   | name    | address    |
++------+---------+------------+
+|  102 | Krishna | oxford ave |
+|  104 | Krisa   | redd ave   |
+|  106 | Kit kat | bear st    |
+|  108 | priya   | rose rd    |
+|  120 | Kittyt  |            |
+|  120 | Kittyt  | NULL       |
++------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update student set id=140 where adress=NULL;
+ERROR 1054 (42S22): Unknown column 'adress' in 'where clause'
+mysql> update student set id=140 where address=NULL;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from student;
++------+---------+------------+
+| id   | name    | address    |
++------+---------+------------+
+|  102 | Krishna | oxford ave |
+|  104 | Krisa   | redd ave   |
+|  106 | Kit kat | bear st    |
+|  108 | priya   | rose rd    |
+|  120 | Kittyt  |            |
+|  120 | Kittyt  | NULL       |
++------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update student set id=140 where address='';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++------+---------+------------+
+| id   | name    | address    |
++------+---------+------------+
+|  102 | Krishna | oxford ave |
+|  104 | Krisa   | redd ave   |
+|  106 | Kit kat | bear st    |
+|  108 | priya   | rose rd    |
+|  140 | Kittyt  |            |
+|  120 | Kittyt  | NULL       |
++------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update student set name='ronny' where address=NULL;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> update student set name='ronny' where address='NULL';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> update student set name='ronny' where id=120;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++------+---------+------------+
+| id   | name    | address    |
++------+---------+------------+
+|  102 | Krishna | oxford ave |
+|  104 | Krisa   | redd ave   |
+|  106 | Kit kat | bear st    |
+|  108 | priya   | rose rd    |
+|  140 | Kittyt  |            |
+|  120 | ronny   | NULL       |
++------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql> set autocommit;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delete from student where id=140;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from student;
++------+---------+------------+
+| id   | name    | address    |
++------+---------+------------+
+|  102 | Krishna | oxford ave |
+|  104 | Krisa   | redd ave   |
+|  106 | Kit kat | bear st    |
+|  108 | priya   | rose rd    |
+|  120 | ronny   | NULL       |
++------+---------+------------+
+5 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> 

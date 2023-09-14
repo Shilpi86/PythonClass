@@ -1,6 +1,6 @@
 Database --- Storage Place --- Tabular
-Structured Format of Data --- SQL
-
+Structured Format of Data --- SQL structured query lang
+# to write the data in records and store the register format data(tabular) in database we use some language that is SQL
 Banking
 
 Databases
