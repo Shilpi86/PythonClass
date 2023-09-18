@@ -1,3 +1,14 @@
+# Truck class should have the following attributes & methods #
+# Old Attributes:
+# color, max_speed, acceleration, tyre_friction, is_engine_started, current_speed
+# New Attributes:
+# max_cargo_weight, load
+# Old Methods:
+# start_engine, stop_engine, accelerate, apply_brakes, sound_horn
+# Override Methods: sound_horn:
+# - Print "Honk Honk" if truck engine is on
+# - Print "Car has not started yet" if truck engine is off
+
 class Car:
     def __init__(self, color, max_speed, acceleration, tyre_friction):
         self.color = color
@@ -35,12 +46,20 @@ class Car:
         else:
             print("Car has not started yet")
 
-
 class Truck(Car):
     def __init__(self, color, max_speed, acceleration, tyre_friction, max_cargo_weight):
         super().__init__(color, max_speed, acceleration, tyre_friction)
         self.max_cargo_weight = max_cargo_weight
         self.load = 0
+
+# load_cargo:
+# - This method will have an argument cargo_weight, denoting the weight to be loaded in the truck.
+# - Truck can load some cargo within max_cargo_weight
+# - When this method is called when the car engine is off, the current_load of the truck
+# should increase according to the cargo_weight passed as an argument to this method.
+# - When this method is called when the car engine is on, print the message "Cannot load cargo during motion"
+# - When the cargo_weight is more than max_cargo_weight,
+# print the message "Cannot load cargo more than max limit: {max_cargo_weight}"
 
     def load_cargo(self, cargo_weight):
         if not self.is_engine_started:
@@ -51,6 +70,14 @@ class Truck(Car):
         else:
             print("Cannot load cargo during motion")
 
+# unload_cargo:
+# - This method will have an argument cargo_weight, denoting the weight to be unloaded from the truck.
+# - Truck can unload amount of cargo_weight passed as an argument, only when the truck engine is off.
+# - If the truck engine is on, print the message "Cannot unload cargo during motion"
+# - Truck load can never go behind 0
+# When a new Truck is created, the engine should be off by default and current_speed, load should be 0
+#Truck can unload amount of cargo_weight passed as an argument,
+                                        # only when the truck engine is off.
     def unload_cargo(self, cargo_weight):
         if not self.is_engine_started:
             if self.load - cargo_weight >= 0:
@@ -60,11 +87,12 @@ class Truck(Car):
         else:
             print("Cannot unload cargo during motion")
 
-    def sound_horn(self):
-        if self.is_engine_started:
-            print("Honk Honk")
-        else:
-            print("Car has not started yet")
+
+def sound_horn(self):
+    if self.is_engine_started:
+        print("Honk Honk")
+    else:
+        print("Car has not started yet")
 
 
 # Example usage:
