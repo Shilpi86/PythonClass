@@ -1,0 +1,138 @@
+mysql> insert into Stationary values("drawing books",20,"books");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> desc Stationary;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| item_name     | varchar(20) | YES  |     | NULL    |       |
+| item_quantity | int         | YES  |     | NULL    |       |
+| item_category | varchar(20) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+
+mysql> select * from Stationary;
++---------------+---------------+---------------+
+| item_name     | item_quantity | item_category |
++---------------+---------------+---------------+
+| drawing books |            20 | books         |
++---------------+---------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> insert into Stationary values("puzzle books",10,"books");
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into Stationary values("color pencils"40,"art supplies");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '40,"art supplies")' at line 1
+mysql> insert into Stationary values("color pencils,"40,"art supplies");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '40,"art supplies")' at line 1
+mysql> insert into Stationary values("color pencils",40,"art supplies");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Stationary values("crayons",100,"art supplies");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from Stationary;
++---------------+---------------+---------------+
+| item_name     | item_quantity | item_category |
++---------------+---------------+---------------+
+| drawing books |            20 | books         |
+| puzzle books  |            10 | books         |
+| color pencils |            40 | art supplies  |
+| crayons       |           100 | art supplies  |
++---------------+---------------+---------------+
+4 rows in set (0.01 sec)
+
+mysql> update Stationary set where item_quantity=100 to 50;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where item_quantity=100 to 50' at line 1
+mysql> update Stationary set item_quantity=50 where item_name="crayons";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Stationary;
++---------------+---------------+---------------+
+| item_name     | item_quantity | item_category |
++---------------+---------------+---------------+
+| drawing books |            20 | books         |
+| puzzle books  |            10 | books         |
+| color pencils |            40 | art supplies  |
+| crayons       |            50 | art supplies  |
++---------------+---------------+---------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into Stationary values("pencils",100,"art supplies");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Stationary values("sketch pens",200,"art supplies");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from Stationary;
++---------------+---------------+---------------+
+| item_name     | item_quantity | item_category |
++---------------+---------------+---------------+
+| drawing books |            20 | books         |
+| puzzle books  |            10 | books         |
+| color pencils |            40 | art supplies  |
+| crayons       |            50 | art supplies  |
+| pencils       |           100 | art supplies  |
+| sketch pens   |           200 | art supplies  |
++---------------+---------------+---------------+
+6 rows in set (0.00 sec)
+
+mysql> delete Stationary where item_name="pencils"
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where item_name="pencils"' at line 1
+mysql> select * from Stationary;
++---------------+---------------+---------------+
+| item_name     | item_quantity | item_category |
++---------------+---------------+---------------+
+| drawing books |            20 | books         |
+| puzzle books  |            10 | books         |
+| color pencils |            40 | art supplies  |
+| crayons       |            50 | art supplies  |
+| pencils       |           100 | art supplies  |
+| sketch pens   |           200 | art supplies  |
++---------------+---------------+---------------+
+6 rows in set (0.00 sec)
+
+mysql> update Stationary set item_category="supplies" where item_name="pencils";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Stationary;
++---------------+---------------+---------------+
+| item_name     | item_quantity | item_category |
++---------------+---------------+---------------+
+| drawing books |            20 | books         |
+| puzzle books  |            10 | books         |
+| color pencils |            40 | art supplies  |
+| crayons       |            50 | art supplies  |
+| pencils       |           100 | supplies      |
+| sketch pens   |           200 | art supplies  |
++---------------+---------------+---------------+
+6 rows in set (0.00 sec)
+
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> commit=0;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=0' at line 1
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delete from Stationary where item_quantity=200;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from Stationary;
++---------------+---------------+---------------+
+| item_name     | item_quantity | item_category |
++---------------+---------------+---------------+
+| drawing books |            20 | books         |
+| puzzle books  |            10 | books         |
+| color pencils |            40 | art supplies  |
+| crayons       |            50 | art supplies  |
+| pencils       |           100 | supplies      |
++---------------+---------------+---------------+
+5 rows in set (0.00 sec)
+
+mysql>
