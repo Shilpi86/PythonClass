@@ -12,3 +12,7 @@ c1.execute("delete from emp where emp_no=105")
 c1.execute("delete from employee where emp_no=104")
 myDbConnection.commit()
 myDbConnection.close()
+
+
+#these 2 Dbex1 and DbEx2 are to create/insert etc , doing some operations on the Database
+# to fetch the data from dbase and display in the Python terminal (something from database), please check DbEx3
