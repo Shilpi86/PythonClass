@@ -13,7 +13,7 @@ c1 = myDbConnection.cursor()
 #c1.execute("create table emp(emp_no int, emp_name varchar(20), emp_address varchar(30))") #static way
 #c1.execute("insert into employee values (101,'ricky',2000)")
 #c1.execute("insert into employee values (102,'pinky',5000)")
-#c1.execute("insert into employee values (103,'chicky',10000)")
+#c1.execute("insert into employee values (103,'chicky',10000)") (OR)
 sql = "insert into employee values(%s,%s,%s)"
 data = (104,'jacky',20000) #partial dynamic way of writing
 c1.execute(sql,data)
