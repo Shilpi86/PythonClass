@@ -1,4 +1,4 @@
-
+#code is close to creating a basic Tkinter window with labels, entry widgets, and a submit button.
 from tkinter import *
 
 root = Tk()

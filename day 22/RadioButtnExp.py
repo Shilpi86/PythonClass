@@ -1,3 +1,5 @@
+#code sets up a Tkinter window with three radio buttons for selecting fruits (Mango, Apple, and Orange),
+
 from tkinter import *
 from tkinter import messagebox
 
