@@ -1,25 +1,42 @@
-from tkinter import *
-from tkinter import messagebox
+import tkinter as tk
 
-root = Tk()
-root.geometry('250x250')
+def click(event):
+    text = event.widget.cget("text")
 
-v1=IntVar()
+    if text == "=":
+        try:
+            result = eval(screen.get())
+            screen.set(result)
+        except Exception as e:
+            screen.set("Error")
+    elif text == "C":
+        screen.set("")
+    else:
+        screen.set(screen.get() + text)
 
-def m1():
-    select = "Selected option is "+str(v1.get()) #v1.get()
-    lb.config(text=select)
+root = tk.Tk()
+root.geometry("300x400")
+root.title("Calculator")
 
-r1 = Radiobutton(root,text="Mango", variable=v1, value=1, command = m1) #value='mango'
-r2 = Radiobutton(root,text="Apple", variable=v1, value=2, command = m1)
-r3 = Radiobutton(root,text="Orange", variable=v1, value=3, command = m1)
+screen = tk.StringVar()
+entry = tk.Entry(root, textvar=screen, font="lucida 20 bold")
+entry.pack(fill=tk.X, ipadx=8, pady=10, padx=10)
 
-r1.pack()
-r2.pack()
-r3.pack()
+button_frame = tk.Frame(root)
+button_frame.pack()
 
+buttons = [
+    '7', '8', '9', '/',
+    '4', '5', '6', '*',
+    '1', '2', '3', '-',
+    '0', 'C', '=', '+'
+]
 
-lb = Label(root)
-lb.pack()
+i = 0
+for btn in buttons:
+    button = tk.Button(button_frame, text=btn, font="lucida 15 bold")
+    button.grid(row=i // 4, column=i % 4, padx=10, pady=10)
+    button.bind("<Button-1>", click)
+    i += 1
 
 root.mainloop()

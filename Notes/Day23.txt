@@ -1,1 +1,57 @@
 Calculator Example
+
+The "btn_click" function appends the clicked button's value to the 'data' variable, which represents the expression to be evaluated. It also updates the input text widget with the current data.
+The "btn_clear" function clears the data variable and updates the input text widget.
+The "btn_equals" function evaluates the expression stored in data and displays the result in the input text widget.
+The GUI layout consists of a text entry widget ('inputText') for displaying the input and output, and a grid of buttons for inputting numbers and operators.
+Lambda functions are used to pass arguments to the 'btn_click' function when a button is clicked.
+Here's a summary of the calculator's functionality:
+
+Enter expressions using the digit buttons (0-9) and operators (+, -, *, /).
+Clear the input by clicking the "C" button.
+Calculate the result by clicking the "=" button.
+
+ANOTHER WAY:
+
+import tkinter as tk
+
+def click(event):
+    text = event.widget.cget("text")
+
+    if text == "=":
+        try:
+            result = eval(screen.get())
+            screen.set(result)
+        except Exception as e:
+            screen.set("Error")
+    elif text == "C":
+        screen.set("")
+    else:
+        screen.set(screen.get() + text)
+
+root = tk.Tk()
+root.geometry("300x400")
+root.title("Calculator")
+
+screen = tk.StringVar()
+entry = tk.Entry(root, textvar=screen, font="lucida 20 bold")
+entry.pack(fill=tk.X, ipadx=8, pady=10, padx=10)
+
+button_frame = tk.Frame(root)
+button_frame.pack()
+
+buttons = [
+    '7', '8', '9', '/',
+    '4', '5', '6', '*',
+    '1', '2', '3', '-',
+    '0', 'C', '=', '+'
+]
+
+i = 0
+for btn in buttons:
+    button = tk.Button(button_frame, text=btn, font="lucida 15 bold")
+    button.grid(row=i // 4, column=i % 4, padx=10, pady=10)
+    button.bind("<Button-1>", click)
+    i += 1
+
+root.mainloop()
