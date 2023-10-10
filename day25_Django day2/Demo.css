@@ -1,0 +1,17 @@
+body{
+background-color:pink;
+}
+h1{
+color:red;
+text-align:center;
+text-decoration-line: overline underline;
+text-transform:uppercase
+}
+#p1{
+background-color:white;
+color:orange;
+font-family:Sans-Serif;
+font-style:Italic;
+font-weight:Bold;
+font-size:20px;
+}
