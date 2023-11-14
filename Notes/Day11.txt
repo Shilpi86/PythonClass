@@ -1,7 +1,7 @@
 Abstraction
 --------------
 1) Hiding the data
-2) if atleast one abstract function is available in a class, the object can't be created
+2) if at least one abstract function is available in a class, the object can't be created
 
 Constructors
 -------------
