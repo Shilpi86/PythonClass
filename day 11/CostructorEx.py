@@ -14,7 +14,7 @@ class Sample:
 
 #or
     def __init__(self,a,b):
-        print(a+b)
+        print(a*b)
 
 obj1 = Sample(10, 20)
 obj1.m1()
